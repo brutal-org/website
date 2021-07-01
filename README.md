@@ -1,3 +1,5 @@
+# Brutal
+
 ![Brutal's logo](logo.png)
 
 - Striking modernist shapes and bold use of modern C are the hallmarks of **BRUTAL**.
