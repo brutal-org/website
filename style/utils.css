@@ -1,0 +1,107 @@
+.flex { display: flex; } 
+
+.flex-col { flex-direction: column; }
+
+.h-screen{
+    height: 100vh;
+}
+
+.text-center{
+    text-align: center;
+} 
+
+.bg-black {
+    background-color: black;
+} 
+
+.text-white{
+    color: white;
+}
+
+.p-8 {
+    padding: 2rem;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.self-center {
+    align-self: center;
+}
+
+.max-w-prose {
+    max-width: 65ch;
+} 
+
+.pt-16{
+    padding-top: 4rem;
+} 
+
+.pb-16{
+    padding-bottom: 4rem;
+}
+
+.gap-8 {
+    gap: 2rem;
+} 
+
+.flex-grow{
+    flex-grow: 1;
+} 
+
+.m-8 {
+    margin: 2rem;
+}
+
+.w-32 {width: 8rem;} 
+
+
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+.text-gray-700 {
+    color: rgba(55, 65, 81, 1);
+}
+
+.font-normal
+{
+    font-weight: 400;
+}
+
+.p-2 {
+    padding: 0.5rem;
+} 
+
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+} 
+
+.uppercase {
+    text-transform: uppercase;
+} 
+
+.w-72 {
+    width: 18rem;
+} 
+
+.rounded {
+    border-radius: 0.25rem;
+}

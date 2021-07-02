@@ -1,8 +1,5 @@
 # Brutal
 
-![Brutal's logo](logo.png)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d7f3e222-11cd-4654-960a-2562516935d4/deploy-status)](https://app.netlify.com/sites/brutal-org/deploys)
 
-- Striking modernist shapes and bold use of modern C are the hallmarks of **BRUTAL**.
-- **BRUTAL** combines the desire of UNIX utopia from the 1970s with modern technology and engineering. 
-
-[GitHub Repository](https://github.com/brutal-org/brutal)
+The brutal operating system website https://brutal-org.netlify.app
