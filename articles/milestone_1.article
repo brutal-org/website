@@ -1,0 +1,56 @@
+<article>
+    <h1>
+        Milestone 1
+    </h1>
+
+    <div class="date">
+        2021.07.12
+    </div>
+
+    <img src="milestone_1.png" alt="">
+
+    <p>
+        The BRUTAL operating system has reached Milestone 1, but what does
+        that mean? It means that we have a working kernel capable of
+        supporting userspace applications, complete with multitasking,
+        memory management, syscalls, SMP, and much more...
+    </p>
+
+    <h2>
+        What's next?
+    </h2>
+
+    <p>
+        Milestone 2 will focus on implementing the IPC System, shell, basic VFS and ramdisk. This roadmap is not set
+        in
+        stone and is subject to changes. You might want to check out the <a
+            href="https://github.com/brutal-org/brutal/blob/main/book/01-02-roadmap.md">latest version of the
+            roadmap</a>.
+    </p>
+
+    <h2>
+        Acknowledgements
+    </h2>
+
+    <p>
+        I (sleepy_monax) would like to thanks everyone who helped during this first milestone.
+        First I want to thanks Supercyp for all the work he did on the kernel. He most notably implemented the SMP,
+        the scheduling and many more features.
+        Next keyboard slayer for porting the system to clang and the APIC timer implementation.
+        Finaly Abbix for his UBSAN implementation.
+    </p>
+
+    <h2>
+        Contributing
+    </h2>
+
+    <p>
+        We welcome all contribution even if they don't fit into our milestones :)
+        The Git repository is available <a href="https://github.com/brutal-org/brutal">on GitHub</a> and you can
+        discuss about BRUTAL on the <a href="http://discord.skiftos.org">skiftOS discord server</a>.
+    </p>
+
+    <p>
+        Thanks for reading and happy hacking :^)
+    </p>
+</article>

@@ -1,0 +1,12 @@
+
+body {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+img {
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
