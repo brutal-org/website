@@ -10,8 +10,8 @@
     <img src="milestone_1.png" alt="">
 
     <p>
-        The BRUTAL operating system has reached Milestone 1, but what does
-        that mean? It means that we have a working kernel capable of
+        After a month of work and 320 commits the BRUTAL operating system has reached Milestone 1, but what does
+        it mean? It means that we have a working kernel capable of
         supporting userspace applications, complete with multitasking,
         memory management, syscalls, SMP, and much more...
     </p>
