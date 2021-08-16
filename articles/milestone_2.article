@@ -1,0 +1,92 @@
+<article>
+    <h1>
+        Milestone 2 - Userspace, IPC, and Syscalls
+    </h1>
+
+    <div class="date">
+        2021.08.16
+    </div>
+
+    <img src="ms2.png" alt="">
+
+    <p>
+        Another month, another Milestone. While the development has slowed down due to many people going on holiday, we
+        still managed to fit many features in. We fixed many bugs and oversight, implementing the
+        kernel's syscall
+        interface, IPC subsystem, and from the user's point of view brutal is now able to display a logo during
+        boot.
+    </p>
+
+    <img src="ms2-boot.png">
+
+
+    <h2>
+        EFI bootloader
+    </h2>
+
+    Abbix has started an EFI based bootloader for BRUTAL, it's not able the load our kernel yet, but the protocol
+    is improving quickly dans it's already capable of loading a simple "Hello, world!" kernels. The best of all, it's configure in scheme a dialect of lisp.
+
+    <img src="ms2-bootloader.png">
+
+    <h2>
+        Udfore
+    </h2>
+
+    The scheme implementation used in brutal is called udfore, it feature some syntaxe sugars to reduce the amount of ()
+    needed and make code more readable for non lisp enlightened persons.
+
+    <pre>
+use 'std-base;
+use 'std-algo;
+use 'std-io;
+
+def (fizzbuzz i : Int) : Str {
+    match ((% i 3) (% i 5))
+    {
+        (0 0) : "fizz buzz";
+        (_ 0) : "buzz";
+        (0 _) : "fizz";
+        default : (str i);
+    };
+};
+
+display (map fizzbuzz (range 1 100));
+    </pre>
+
+    <h2>
+        What's next?
+    </h2>
+
+    <p>
+        Milestone 3 will focus on the acpi, pci and virtio sub-systems. This roadmap is not set
+        in
+        stone and is subject to changes. You might want to check out the <a class="link"
+            href="https://github.com/brutal-org/brutal/blob/main/book/01-02-roadmap.md">latest version of the
+            roadmap</a>.
+    </p>
+
+    <h2>
+        Acknowledgements
+    </h2>
+
+    <p>
+        I (sleepy_monax) would like to thanks everyone who helped during this second milestone. Like supercyp for all
+        the bug fix it did in the kernel, and Abbix for his work on the bootloader.
+    </p>
+
+    <h2>
+        Contributing
+    </h2>
+
+    <p>
+        We welcome all contribution even if they don't fit into our milestones :)
+        The Git repository is available <a class="link" href="https://github.com/brutal-org/brutal">on GitHub</a> and
+        you can
+        discuss about BRUTAL on the <a class="link" href="http://discord.skiftos.org">skiftOS discord server</a>.
+    </p>
+
+    <p>
+        Thanks for reading and happy hacking :^)
+    </p>
+</article>

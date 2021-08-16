@@ -23,7 +23,7 @@
     <p>
         Milestone 2 will focus on implementing the IPC System, shell, basic VFS and ramdisk. This roadmap is not set
         in
-        stone and is subject to changes. You might want to check out the <a
+        stone and is subject to changes. You might want to check out the <a class="link"
             href="https://github.com/brutal-org/brutal/blob/main/book/01-02-roadmap.md">latest version of the
             roadmap</a>.
     </p>

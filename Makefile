@@ -1,10 +1,14 @@
 ARTICLES=$(wildcard articles/*.article)
 ARTICLES_HTML=$(patsubst %.article, %.html, $(ARTICLES))
 
-articles/%.html: articles/%.article
-	cat template/article_header.html $^ template/article_footer.html > $@
+%.css: %.tw.css
+	npx tailwindcss -i $< -o $@
 
-all: $(ARTICLES_HTML)
+articles/%.html: articles/%.article template/article_header.html template/article_footer.html
+	cat template/article_header.html $< template/article_footer.html > $@
+
+
+all: $(ARTICLES_HTML) style.css base.css
 
 clean:
-	rm $(ARTICLES_HTML)
+	rm -f $(ARTICLES_HTML) style.css base.css

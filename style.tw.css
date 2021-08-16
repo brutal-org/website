@@ -1,0 +1,42 @@
+h1 {
+    @apply text-2xl font-black my-4;
+}
+
+h2 {
+    @apply text-xl font-black my-4;
+}
+
+h3 {
+    @apply text-lg font-black my-4;
+}
+
+img {
+    @apply w-full py-4;
+}
+
+p {
+    @apply my-4;
+}
+
+pre {
+    @apply bg-black text-white my-4 p-4;
+}
+
+.link {
+    @apply text-pink-500;
+
+    color: #000;
+    box-shadow: inset 0 -2px 0 0 #000a;
+    transition: all 100ms;
+}
+
+.link:hover {
+    transition: all 100ms;
+    color: #f06;
+    box-shadow: inset 0 -4px 0 0 #f06a;
+}
+
+.link::after{
+    @apply font-bold;
+    content: "↗";
+}
