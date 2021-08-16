@@ -25,7 +25,8 @@
     </h2>
 
     Abbix has started an EFI based bootloader for BRUTAL, it's not able the load our kernel yet, but the protocol
-    is improving quickly dans it's already capable of loading a simple "Hello, world!" kernels. The best of all, it's configure in scheme a dialect of lisp.
+    is improving quickly and is already capable of loading a simple "Hello, world!" kernel. The best of all, it's
+    configured in Scheme, a Lisp dialect.
 
     <img src="ms2-bootloader.png">
 
@@ -33,8 +34,8 @@
         Udfore
     </h2>
 
-    The scheme implementation used in brutal is called udfore, it feature some syntaxe sugars to reduce the amount of ()
-    needed and make code more readable for non lisp enlightened persons.
+    Our Scheme implementation is called udfore, it features some syntactic sugar to reduce the amount of ()
+    needed and makes code more readable for non Lisp enlightened persons.
 
     <pre>
 use 'std-base;
@@ -59,7 +60,7 @@ display (map fizzbuzz (range 1 100));
     </h2>
 
     <p>
-        Milestone 3 will focus on the acpi, pci and virtio sub-systems. This roadmap is not set
+        Milestone 3 will focus on the ACPI, PICe and Virt-IO sub-systems. This roadmap is not set
         in
         stone and is subject to changes. You might want to check out the <a class="link"
             href="https://github.com/brutal-org/brutal/blob/main/book/01-02-roadmap.md">latest version of the
