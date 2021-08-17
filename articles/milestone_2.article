@@ -72,8 +72,8 @@ display (map fizzbuzz (range 1 100));
     </h2>
 
     <p>
-        I (sleepy_monax) would like to thanks everyone who helped during this second milestone. Like supercyp for all
-        the bug fix he did in the kernel, and Abbix for his work on the bootloader.
+        I (sleepy_monax) would like to thanks everyone who helped during this second milestone. Like Supercyp for all
+        the bug fix he did in the kernel and the work he did on the interface description language, and Abbix for his work on the bootloader.
     </p>
 
     <h2>
