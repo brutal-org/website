@@ -60,7 +60,7 @@ display (map fizzbuzz (range 1 100));
     </h2>
 
     <p>
-        Milestone 3 will focus on the ACPI, PICe and Virt-IO sub-systems. This roadmap is not set
+        Milestone 3 will focus on the ACPI, PCIe and Virt-IO sub-systems. This roadmap is not set
         in
         stone and is subject to changes. You might want to check out the <a class="link"
             href="https://github.com/brutal-org/brutal/blob/main/book/01-02-roadmap.md">latest version of the
