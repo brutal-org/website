@@ -63,7 +63,7 @@ display (map fizzbuzz (range 1 100));
         Milestone 3 will focus on the ACPI, PCIe and Virt-IO sub-systems. This roadmap is not set
         in
         stone and is subject to changes. You might want to check out the <a class="link"
-            href="https://github.com/brutal-org/brutal/blob/main/book/01-02-roadmap.md">latest version of the
+            href="https://github.com/brutal-org/brutal/blob/main/book/roadmap.md">latest version of the
             roadmap</a>.
     </p>
 
@@ -84,7 +84,7 @@ display (map fizzbuzz (range 1 100));
         We welcome all contribution even if they don't fit into our milestones :)
         The Git repository is available <a class="link" href="https://github.com/brutal-org/brutal">on GitHub</a> and
         you can
-        discuss about BRUTAL on the <a class="link" href="http://discord.skiftos.org">skiftOS discord server</a>.
+        discuss about BRUTAL on the <a class="link" href="http://discord.skiftos.org">brutal discord server</a>.
     </p>
 
     <p>
