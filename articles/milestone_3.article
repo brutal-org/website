@@ -1,0 +1,134 @@
+<article>
+
+    <h1>Milestone 3</h1>
+
+    <div class="date">
+        2021.11.20
+    </div>
+
+    <img src="ms2.png" alt="">
+
+    It's been a while since a milestone has been passed...
+    And this one was the longest and most massive milestone we've done. It's about 500 commits and more than 15000 lines
+    of code !
+
+    The main things of this milestone are:
+    <ul>
+        <li>- The finalization of the uefi bootloader. </li>
+        <li>- The interface definition language: BID.</li>
+        <li>- PCIe</li>
+        <li>- ACPI</li>
+        <li>- Interrupt routing to userspace</li>
+        <li>- Fibers</li>
+        <li>- The beginning of a home-made C compiler</li>
+        <li>- A rasterizer</li>
+        <li>- The start of a virtio driver</li>
+        <li>- And many other things... </li>
+    </ul>
+    <img src="ms3-boot.png" alt="">
+
+    <h2>
+        Acknowledgements
+    </h2>
+
+    First, I (supercyp) wanted to thanks everyone that helped Brutal reach this state.
+    Thanks for d0p1 for starting working on the network driver, Quentincestino for working on the Virtio-driver, thanks
+    also to Monax who let me write this article
+    and thanks for all <a class="link" href="https://github.com/brutal-org/brutal/graphs/contributors"> contributors
+    </a> of this milestone !
+
+    <h2>The uefi bootloader</h2>
+
+    Since this milestone, Brutal is now able to boot completely from the bootloader.
+    Besides, it has replaced limine (this does not mean that we will not support limine in the future).
+    The bootloader now uses JSON for the configuration file. And it is now possible to configure the framebuffer and add
+    modules.
+
+    <h2>BID, the Brutal Interface Definition language</h2>
+
+    BID is one of the most important part of this milestone. It is a language that allows to define a protocol between a
+    server and a user app.
+
+    For example, here is the basic code for an imaginary server:
+    <pre>
+interface sample_server
+{
+    /* this is a basic example of what bid can do */
+
+    type Path: Str;
+    type FileHandle: U32;
+
+    method open_file { path: Path } -> FileHandle;
+    
+    method get_file_info { 
+        handle: FileHandle 
+    } -> {
+        name : Str,
+        size : U32,
+        date : Str
+    };
+
+    method read_file { handle: FileHandle } -> Buf; 
+    
+    method write_file { 
+        handle: FileHandle, 
+        buf: Buf 
+    } -> U32;
+}
+    </pre>
+
+    With this, BID is able to generate C code for the server and for the client. Simplifying programming an interaction
+    with a server and a client.
+
+    We have also developed a small visual studio code extension that allows basic syntax highlighting !
+
+    <h2> The C compiler </h2>
+
+    Lately, we have started a C compiler. This compiler, will features some extensions that will simplify the
+    programming of brutal.
+    For the moment we have a work in progress parser.
+    We are also, able to generate an AST and we can convert this AST to C code (We use the C ast to C code in BID for
+    generating C files).
+
+    <h2> Fibers </h2>
+
+    In this milestone, we now have fibers. Fibers is like a coroutine in C.
+    This allows to make a faster "event loop" for small execution threads.
+    It is as if an application had its own cooperative multithreaded system.
+    We also have them working on linux !
+
+    <h2> misc things </h2>
+    Brutal has now a PCIe server, an ACPI server, and there is also interrupt routing.
+    This means that we will soon be able to write drivers for devices !
+    For now we already have a ps2 driver in userspace. And the bases for a virtio driver.
+
+
+    <h2>
+        What's next?
+    </h2>
+
+    In the next milestone, milestone 4, we will focus on disks, networks, shell development, finalization of virtio
+    drivers and (maybe) riscv support.
+
+    This roadmap is not set in, the next milestone and is subject to changes. You might want to check out the <a
+        class="link" href="https://github.com/brutal-org/brutal/blob/main/book/roadmap.md">latest version of the
+        roadmap</a>.
+
+    <h2>
+        Contributing
+    </h2>
+
+    <p>
+        We welcome all contribution even if they don't fit into our milestones :)
+        The Git repository is available <a class="link" href="https://github.com/brutal-org/brutal">on GitHub</a>
+        and you can discuss about BRUTAL on the <a class="link" href="http://discord.skiftos.org">brutal discord
+            server</a>.
+
+        Or, if you're french, you can still talk about brutal on the <a class="link"
+            href="https://discord.com/invite/3XjkM6q">DEVSE discord server</a>.
+    </p>
+
+    <p>
+        Thanks for reading and happy hacking !
+    </p>
+</article>
