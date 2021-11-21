@@ -36,8 +36,8 @@
 
 
     <p>
-        First, I (supercyp) wanted to thanks everyone that helped Brutal reach this state.
-        Thanks for d0p1 for starting working on the network stack, Quentincestino for working on the VirtIO driver,
+        First, I (supercyp) wanted to thank everyone that helped Brutal reach this state.
+        Thanks to d0p1 for starting to work on the network stack, Quentincestino for working on the VirtIO driver,
         thanks also to sleepy_monax who let me write this article and <a class="link"
             href="https://github.com/brutal-org/brutal/graphs/contributors">everyone else</a> who contributed to this
         milestone!
@@ -46,7 +46,7 @@
     <h2>The UEFI Bootloader</h2>
 
     <p>
-        Next, Brutal is now able to boot from our in house bootloader. and this mean we are
+        Next, Brutal is now able to boot from our in house bootloader. This means we are
         completely dependency free at runtime!
     </p>
 
@@ -61,7 +61,7 @@
     </div>
 
     <p>
-        Then, the most important part of this mileston : BID. It's a language that allows to define an interface to a
+        Then, the most important part of this milestone : BID. It's a language that allows to define an interface for a
         server.
         <br>
         For example, here is the interface description for a simple filesystem server:
@@ -92,7 +92,7 @@ interface Fs
     <p>
         With this, BID is able to generate C code for the server and for the client. Simplifying programming an
         interaction
-        with a server and a client.
+        between a server and a client.
     </p>
 
     <pre>
@@ -119,7 +119,7 @@ if (result != FS_SUCESS)
     </div>
 
     <p>
-        Lately, we have started building a C compiler. This compiler, will features some extensions (mainly lambdas and
+        Lately, we have started building a C compiler. This compiler, will feature some extensions (mainly lambdas and
         modules) that will simplify
         the
         development of Brutal.
@@ -158,7 +158,7 @@ void* result = fiber_await(fiber);</pre>
     </h2>
 
     <p>
-        Finally, we build a PCIe server and ACPI server, and added interrupt routing to userspace in the kernel.
+        Finally, we built a PCIe server, ACPI server, and added interrupt routing to userspace in the kernel.
         This means that we are able to write device drivers in userspace!
         Right now we have only a proof of concept P/S 2 driver.
     </p>
