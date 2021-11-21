@@ -37,7 +37,7 @@
 
     <p>
         First, I (supercyp) wanted to thank everyone that helped Brutal reach this state.
-        Thanks to d0p1 for starting to work on the network stack, Quentincestino for working on the VirtIO driver,
+        Thanks to d0p1 for starting to work on the network stack, Quentincestino for working on the VirtIO driver, Abbix for correcting the spelling mistakes in this article,
         thanks also to sleepy_monax who let me write this article and <a class="link"
             href="https://github.com/brutal-org/brutal/graphs/contributors">everyone else</a> who contributed to this
         milestone!
