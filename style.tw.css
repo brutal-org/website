@@ -10,16 +10,12 @@ h3 {
     @apply text-lg font-black my-4;
 }
 
-img {
-    @apply w-full py-4;
-}
-
 p {
     @apply my-4;
 }
 
 pre {
-    @apply bg-black text-white my-4 p-4;
+    @apply bg-black text-white my-4 p-4 overflow-x-auto;
 }
 
 .link {
