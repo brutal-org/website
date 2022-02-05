@@ -1,0 +1,52 @@
+---
+title: Milestone 2
+subtitle: Userspace, IPC, and Syscalls
+cover: /articles/milestone-2/cover.png
+date: "2021-08-16"
+authors: ["Sleepy Monax"]
+---
+
+Another month, another Milestone. While the development has slowed down due to many people going on holiday, we still managed to fit many features in. We fixed many bugs and oversight, implementing the kernel's syscall interface, IPC subsystem, and from the user's point of view brutal is now able to display a logo during boot.
+
+![](/articles/milestone-2/boot.png)
+
+## EFI bootloader
+
+Abbix has started an EFI based bootloader for BRUTAL, it's not able the load our kernel yet, but the protocol is improving quickly and is already capable of loading a simple "Hello, world!" kernel. The best of all, it's configured in Scheme, a Lisp dialect.
+
+![](/articles/milestone-2/bootloader.png)
+
+## Udfore
+
+Our Scheme implementation is called udfore, it features some syntactic sugar to reduce the amount of () needed and makes code more readable for non Lisp enlightened persons.
+
+```
+use 'std-base;
+use 'std-algo;
+use 'std-io;
+
+def (fizzbuzz i : Int) : Str {
+    match ((% i 3) (% i 5))
+    {
+        (0 0) : "fizz buzz";
+        (_ 0) : "buzz";
+        (0 _) : "fizz";
+        default : (str i);
+    };
+};
+
+display (map fizzbuzz (range 1 100));
+```
+## What's next?
+
+Milestone 3 will focus on the ACPI, PCIe and Virt-IO sub-systems. This roadmap is not set in stone and is subject to changes. You might want to check out the <a class="link" href="https://github.com/brutal-org/brutal/blob/main/book/roadmap.md">latest version of the roadmap</a>.
+
+## Acknowledgements
+
+I (sleepy_monax) would like to thanks everyone who helped during this second milestone. Like Supercyp for all the bug fix he did in the kernel and the work he did on the interface description language, and Abbix for his work on the bootloader.
+
+## Contributing
+
+We welcome all contribution even if they don't fit into our milestones :) The Git repository is available <a class="link" href="https://github.com/brutal-org/brutal">on GitHub</a> and you can discuss about BRUTAL on the <a class="link" href="http://discord.skiftos.org">brutal discord server</a>.
+
+Thanks for reading and happy hacking :^)
