@@ -1,0 +1,115 @@
+---
+title: Milestone 3
+subtitle: Bootloader, PCIe, ACPI, and IPCs
+cover: /articles/milestone-3/cover.png
+date: "2021-11-21"
+authors: ["Supercyp", "Sleepy Monax"]
+---
+
+It's been a while since a new milestone has passed... And this one was the longest and most massive milestone we've done. It's about 500 commits and more than 15000 lines of code! The key points of this milestone are:
+
+ - The finalization of the UEFI bootloader;
+ - The interface definition language: BID;
+ - Basic PCIe and ACPI support;
+ - Interrupt routing to userspace;
+ - Fibers;
+ - The beginning of a home-made C compiler;
+ - A rasterizer;
+ - The start of a VirtIO driver;
+ - And many more...
+
+## Acknowledgements
+
+![](/articles/milestone-3/thanks.png)
+
+First, I (supercyp) wanted to thank everyone that helped Brutal reach this state. Thanks to d0p1 for starting to work on the network stack, Quentincestino for working on the VirtIO driver, Abbix for correcting the spelling mistakes in this article, thanks also to sleepy_monax who let me write this article and <a href="https://github.com/brutal-org/brutal/graphs/contributors">everyone else</a> who contributed to this milestone!
+
+## The UEFI Bootloader
+
+Next, Brutal is now able to boot from our in house bootloader. This means we are
+completely dependency free at runtime!
+
+![](/articles/milestone-3/boot.png)
+
+## BID, The Brutal Interface Definition Language
+
+![](/articles/milestone-3/bid.png)
+
+Then, the most important part of this milestone: BID. It's a language that allows to define an interface for a server.
+
+For example, here is the interface description for a simple filesystem server:
+
+```
+interface Fs
+{
+    type Path: Str;
+    type Handle: U32;
+
+    method open Path -> Handle;
+
+    method stat Handle -> {
+        name : Str,
+        size : Size,
+        date : Str
+    };
+
+    method read Handle -> Buf;
+
+    method write {
+        handle: Handle,
+        buf: Buf
+    } -> Size;
+}
+```
+
+With this, BID is able to generate C code for the server and for the client. Simplifying programming an interaction between a server and a client.
+
+```
+Str path = str$("/home/user/todo.txt");
+FsHandle handle;
+
+FsResult result = fs_open_file(fs_server, &path, &handle, alloc);
+
+if (result != FS_SUCESS)
+{
+    panic$("Can't open file 'todo.txt'");
+}
+```
+
+We have also developed a small visual studio code extension that allows basic syntax highlighting!
+
+## The C compiler
+
+![](/articles/milestone-3/cc.png)
+
+Lately, we have started building a C compiler. This compiler, will feature some extensions (mainly lambdas and modules) that will simplify the development of Brutal.
+
+For the moment we have a work in progress parser able to generate an AST. And we are able to convert this AST back to C code (This is used by BID for generating C code).
+
+## Fibers
+
+![](/articles/milestone-3/fibers.png)
+
+```
+Fiber* fiber = fiber_start(entry_point, context);
+fiber_yield();
+void* result = fiber_await(fiber);
+```
+
+Next in this milestone, we have fibers. Fibers are lightweight cooperative threads and are used as the foundation of our async APIs. We also got them working on linux!
+
+## Miscellaneous Improvements
+
+Finally, we built a PCIe server, ACPI server, and added interrupt routing to userspace in the kernel. This means that we are able to write device drivers in userspace! Right now we have only a proof of concept P/S 2 driver.
+
+## What's Next?
+
+Milestone 4 will focus on building the network and storage stack, improve the stability of the kernel, and build a basic shell.
+
+This roadmap is not set in stone, and is subject to changes. You might want to check out the <a href="https://github.com/brutal-org/brutal/blob/main/book/roadmap.md">latest version of the roadmap</a>.
+
+## Contributing
+
+We welcome all contribution even if they don't fit into our milestones :) The Git repository is available <a class="link" href="https://github.com/brutal-org/brutal">on GitHub</a> and you can chat with us on the <a class="link" href="http://discord.skiftos.org">Brutal discord server</a>, or if you speak french on the <a class="link" href="https://discord.com/invite/3XjkM6q">DEVSE discord server</a>.
+
+Thanks for reading and happy hacking!
