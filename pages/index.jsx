@@ -2,7 +2,7 @@ import { useTheme } from "next-themes";
 import Head from "next/head";
 import Link from "next/link";
 import Logo from "../components/common/Logo";
-
+import Button from "../components/common/Button";
 
 export default function Home() {
   return (
@@ -16,16 +16,8 @@ export default function Home() {
         Striking modernist shapes and bold use of modern C are the hallmarks of BRUTAL. Inspired by brutalist design BRUTAL combines the ideals of UNIX from the 1970s with modern technology and engineering.
       </p>
       <div className="flex gap-4">
-        <Link href="https://github.com/brutal-org/brutal">
-          <div className="uppercase rounded p-4 bg-black text-white dark:bg-white dark:text-black self-start">
-            contribute on GitHub
-          </div>
-        </Link>
-        <Link href="https://github.com/brutal-org/brutal">
-          <div className="uppercase rounded p-4 bg-black text-white dark:bg-white dark:text-black self-start">
-            download the latest release
-          </div>
-        </Link>
+        <Button href="https://github.com/brutal-org/brutal">contribute on GitHub</Button>
+        <Button href="https://github.com/brutal-org/brutal/releases">download the latest release</Button>
       </div>
     </div>
   )
