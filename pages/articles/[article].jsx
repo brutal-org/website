@@ -4,15 +4,32 @@ import matter from 'gray-matter'
 import fs from 'node:fs/promises';
 import Head from 'next/head';
 
-const components = {
-  img: (props) => <img {...props} className="rounded bg-white m-auto" />
+function ActicleImage({ src, alt }) {
+  if (alt === undefined)
+    return <img className="rounded bg-white m-auto" src={src} alt="" />
+  return (
+    <figure>
+      <img className="rounded bg-white m-auto" src={src} alt="" />
+      <figcaption className='text-center'>{alt}</figcaption>
+    </figure>
+  );
 }
 
-export default function Article({ source, frontMatter }) {
+const components = {
+  img: (props) => <ActicleImage {...props} />
+}
+
+export default function Article({ id, source, frontMatter }) {
   return (
     <article className="max-w-prose m-auto prose prose-neutral dark:prose-invert ">
       <Head>
         <title>{frontMatter.title} - BRUTAL</title>
+
+        <meta property="og:title" content={frontMatter.title} />
+        <meta property="og:description" content={frontMatter.description} />
+        <meta property="og:image" content={frontMatter.image} />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="BRUTAL" />
       </Head>
 
       <img className='rounded shadow-2xl' src={frontMatter.cover}></img>
@@ -24,8 +41,9 @@ export default function Article({ source, frontMatter }) {
 
 export async function getStaticPaths() {
   const articles = await fs.readdir('public/articles/')
-
   const paths = articles.map(article => ({ params: { article } }))
+  const legacy_paths = articles.map(article => ({ params: { article: (article + '.html').replace('-', '_') } }))
+  paths.push(...legacy_paths)
 
   return {
     paths,
@@ -34,8 +52,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const source = await fs.readFile("public/articles/" + params.article + "/content.mdx")
+  let article = params.article.replace('.html', '').replace('_', '-')
+  const source = await fs.readFile("public/articles/" + article + "/content.mdx")
   const { content, data } = matter(source)
   const mdxSource = await serialize(content, { scope: data })
-  return { props: { source: mdxSource, frontMatter: data } }
+  return { props: { id: article, source: mdxSource, frontMatter: data } }
 }

@@ -10,23 +10,24 @@ It's been a long time, 450 commits to be precise but we are back with a new mile
 
 ## New Website
 
-First, we rebuild the website from scratch! with improved redabilty and layout using the following tech stack:
+First, we rebuild the website from scratch with improved redabilty and layout. This website was built using the following tech stack:
 
-- nextjs
-- tailwindcss
-- mdx
+- NextJS
+- TailwindCSS
+- MDX
 
 You might think this is a bit overkill for a simple blog, but we have big plan for the future ;)
 
 ## Improved IPC and IDL
 
-Next, our IPC framework got a big everhault this release with support for:
+Next, our IPC framework got a big everhault with this release and add support for:
 
 - Attributes
 - Improved user defined types
 - Modules
+- Capabilities
 
-Here is an exemple of an IPC module:
+Here is an exemple of an IPC module describing a simple event dispatcher, it will dispatch events to all the provided sinks.
 
 ```
 module event;
@@ -42,6 +43,21 @@ interface Sink
 };
 ```
 
+When fed into our IDL compiler the interface can be easily used in C code like this:
+
+```c
+UiEvent event = ...;
+bool captured = false;
+
+EventError error = event_sink_dispatch_rpc(self, event_sink_port, &event, &captured);
+
+if (error != EVENT_SUCCESS)
+{
+    // Handle error
+}
+```
+
+Also our init system now supports manifest files instead of hard coded servers. For example, we can now have a manifest file for the `ps2` server:
 
 ```json
 {
@@ -51,22 +67,35 @@ interface Sink
 }
 ```
 
+This manifest describe a server named `ps2` that consume the `system.Server` and the `event.Sink` interfaces. The `system.Server` interface is used to interact with the init system, and the `event.Sink` interface is used to dispatch events.
+
+Servers can have different rights:
+
+- `irq`: the server can bind to an IRQ
+- `pio`: the server can interract with the CPU's IO ports
+- `log`: the server can log messages to the kernel log
+
+Theres is many more rights, but we will not go into them here.
+
 ## Graphic Library
 
-After that, we built a full graphic library featuring vector graphics, bitmap graphics, and a lot of other stuff.
+After that, we built a full graphic library featuring vector graphics, bitmap graphics, and a lot of other cool stuff.
+
+![Demonstration of SVG support](/articles/milestone-4/svg-path.png)
+
+![Demonstration of Vector fonts support](/articles/milestone-4/vector-font.png)
 
 ## Widget Library
 
 Based on the new IPC framework and the new graphic library, we built a new widget library.
 
-![](/articles/milestone-4/desktop.png)
+![The BRUTAL Desktop](/articles/milestone-4/desktop.png)
 
-(NOTE: this is using our builtin fallback font since we don't have filesystem support yet)
+NOTE: This is using our builtin fallback font since we don't have filesystem support yet
 
 ## General Improvements
 
-- Improved stability
-- Tons of library improvements
+On top of everythings stated above, fix countless bugs and improve the overall performance of the operating system. We continued working on our C compiler. Implemented basic support for ext2 filesystems.
 
 ## What's Next
 

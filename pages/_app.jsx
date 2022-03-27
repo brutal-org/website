@@ -11,7 +11,7 @@ function App({ Component, pageProps }) {
         <link rel="icon" href="favicon.svg" />
       </Head>
       <Navbar />
-      <div className="grow">
+      <div className="flex grow">
         <Component {...pageProps} />
       </div>
     </div>
