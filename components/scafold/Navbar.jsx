@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useTheme } from 'next-themes'
 import ThemeToggle from "../common/ThemeToggle";
 import Logo from "../common/Logo";
 
