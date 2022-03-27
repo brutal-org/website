@@ -6,17 +6,17 @@ date: "2022-03-27"
 authors: [ "Sleepy Monax"]
 ---
 
-It's been a long time, 450 commits to be precise but we are back with a new milestone of the BRUTAL operating system! This one was focused on the desktop side of things, but also on improving our IPC framework.
+It's been a long time, 450 commits to be precise but we are back with a new milestone for the BRUTAL operating system! This one focused on the desktop side of things, but also on improving our IPC framework and init system.
 
 ## New Website
 
 First, we rebuild the website from scratch with improved redabilty and layout. This website was built using the following tech stack:
 
-- NextJS
-- TailwindCSS
-- MDX
+- [Next.js](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [MDX](https://mdxjs.com/)
 
-You might think this is a bit overkill for a simple blog, but we have big plan for the future ;)
+You might think this is a bit overkill for a simple blog, but we have big plans for the future ;)
 
 ## Improved IPC and IDL
 
@@ -27,7 +27,7 @@ Next, our IPC framework got a big everhault with this release and add support fo
 - Modules
 - Capabilities
 
-Here is an exemple of an IPC module describing a simple event dispatcher, it will dispatch events to all the provided sinks.
+Here is an exemple of an IPC module describing a simple event dispatcher:
 
 ```
 module event;
@@ -87,7 +87,7 @@ After that, we built a full graphic library featuring vector graphics, bitmap gr
 
 ## Widget Library
 
-Based on the new IPC framework and the new graphic library, we built a new widget library.
+Based on the improved IPC framework and graphic library, we built a simple widget library with support for buttons, labels, windows, etc...
 
 ![The BRUTAL Desktop](/articles/milestone-4/desktop.png)
 
@@ -95,7 +95,9 @@ NOTE: This is using our builtin fallback font since we don't have filesystem sup
 
 ## General Improvements
 
-On top of everythings stated above, fix countless bugs and improve the overall performance of the operating system. We continued working on our C compiler. Implemented basic support for ext2 filesystems.
+
+On top of everythings stated above, we fixed countless bugs and improved the overall performance of the operating system. We continued working on our C compiler. Implemented basic support for ext2 filesystems.
+
 
 ## What's Next
 
@@ -111,6 +113,6 @@ I (sleepy_monax) wanted to thank everyone who continue help Brutal to grow. Like
 
 ## Contributing
 
-We welcome all contribution even if they don't fit into our milestones :) The Git repository is available <a class="link" href="https://github.com/brutal-org/brutal">on GitHub</a> and you can chat with us on the <a class="link" href="http://discord.skiftos.org">Brutal discord server</a>, or if you speak french on the <a class="link" href="https://discord.com/invite/3XjkM6q">DEVSE discord server</a>.
+We welcome all contribution even if they don't fit into our milestones :) The Git repository is available [on GitHub](https://github.com/brutal-org/brutal) and you can discuss about BRUTAL on the [brutal discord server](http://discord.skiftos.org).
 
 Thanks for reading and happy hacking!
