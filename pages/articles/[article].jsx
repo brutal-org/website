@@ -26,8 +26,8 @@ export default function Article({ id, source, frontMatter }) {
         <title>{frontMatter.title} - BRUTAL</title>
 
         <meta property="og:title" content={frontMatter.title} />
-        <meta property="og:description" content={frontMatter.description} />
-        <meta property="og:image" content={frontMatter.image} />
+        <meta property="og:description" content={frontMatter.subtitle} />
+        <meta property="og:image" content={frontMatter.cover} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="BRUTAL" />
       </Head>
