@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes"
-import { useEffect, useState } from "react"
+import { useEffect, useState, Fragment } from "react"
 
 export default function ThemeToggle() {
     const [mounted, setMounted] = useState(false)
@@ -10,9 +10,14 @@ export default function ThemeToggle() {
 
     if (!mounted) return null
 
-    return (<button onClick={() => {
-        setTheme(theme === 'light' ? 'dark' : 'light')
-    }}>
-        {theme === 'light' ? '🌙' : '☀️'}
-    </button>)
+    return (
+        <Fragment>
+            <button className="block dark:hidden" onClick={() => setTheme('dark')}>
+                🌙
+            </button>
+            <button className="hidden dark:block" onClick={() => setTheme('light')}>
+                ☀️
+            </button>
+        </Fragment>
+    )
 }
