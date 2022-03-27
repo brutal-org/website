@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 
 export default function Logo(props) {
     const [mounted, setMounted] = useState(false)
@@ -10,7 +10,12 @@ export default function Logo(props) {
 
     if (!mounted) return null
 
-    return <img
-        className={props.className}
-        src={theme === 'dark' ? "/scafold/logo-dark.svg" : "/scafold/logo-light.svg"} />
+    return <Fragment>
+        <img
+            className={"hidden dark:block " + props.className}
+            src="/scafold/logo-dark.svg" />
+        <img
+            className={"block dark:hidden " + props.className}
+            src="/scafold/logo-light.svg" />
+    </Fragment>
 }
