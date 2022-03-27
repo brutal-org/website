@@ -1,6 +1,4 @@
-import { useTheme } from "next-themes";
 import Head from "next/head";
-import Link from "next/link";
 import Logo from "../components/common/Logo";
 import Button from "../components/common/Button";
 
