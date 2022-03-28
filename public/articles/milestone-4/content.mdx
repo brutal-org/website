@@ -42,7 +42,7 @@ We started working on RISC-V support, it's still early, but we have VMM, interru
 
 ## IPC Subsystem
 
-Our IPC subsystem got a substantial overhaul. Now the system is split into components that communicate using capabilities. Each one has a manifest that describes which system capabilities are needed to start and the list of rights it possesses. Components and capabilities are wired together by the system server using the manifest. This architecture is mainly inspired by the Fushia operating system built by Google.
+Our IPC subsystem got a substantial overhaul. Now the system is split into components that communicate using capabilities. Each one has a manifest that describes which system capabilities are needed to start and the list of rights it possesses. Components and capabilities are wired together by the system server using the manifest. This architecture is mainly inspired by the Fuchsia operating system built by Google.
 
 ## General Improvements
 
