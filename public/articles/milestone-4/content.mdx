@@ -3,116 +3,57 @@ title: Milestone 4
 subtitle: The Year of the the Brutal Desktop
 cover: /articles/milestone-4/cover.png
 date: "2022-03-27"
-authors: [ "Sleepy Monax"]
+authors: ["Sleepy Monax"]
 ---
 
-It's been a long time, 450 commits to be precise but we are back with a new milestone for the BRUTAL operating system! This one focused on the desktop side of things, but also on improving our IPC framework and init system.
+## Graphical User Interface Library
 
-## New Website
+In the last milestone post, we said that milestone four would focus on the network and storage stack. Well, we got a bit sidetracked and instead got a GUI rolling.
 
-First, we rebuild the website from scratch with improved redabilty and layout. This website was built using the following tech stack:
+![The BRUTAL Desktop](/articles/milestone-4/desktop.png)
 
-- [Next.js](https://nextjs.org/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [MDX](https://mdxjs.com/)
+We are introducing brutal-GUI, a cross-platform user interface library for BRUTAL, Linux, macOS, and probably any other platform where SDL is supported. It supports flexbox-inspired layout, right-to-left, left-to-right layout, and simple widgets like icons, images, buttons, and labels.
 
-You might think this is a bit overkill for a simple blog, but we have big plans for the future ;)
-
-## Improved IPC and IDL
-
-Next, our IPC framework got a big everhault with this release and add support for:
-
-- Attributes
-- Improved user defined types
-- Modules
-- Capabilities
-
-Here is an exemple of an IPC module describing a simple event dispatcher:
-
-```
-module event;
-
-import base, math;
-include brutal/ui.h;
-
-type Event = __ctype(UiEvent);
-
-interface Sink
-{
-    method dispatch Event -> Bool;
-};
-```
-
-When fed into our IDL compiler the interface can be easily used in C code like this:
-
-```c
-UiEvent event = ...;
-bool captured = false;
-
-EventError error = event_sink_dispatch_rpc(self, event_sink_port, &event, &captured);
-
-if (error != EVENT_SUCCESS)
-{
-    // Handle error
-}
-```
-
-Also our init system now supports manifest files instead of hard coded servers. For example, we can now have a manifest file for the `ps2` server:
-
-```json
-{
-    "name": "ps2",
-    "consume": ["system.Server", "event.Sink"],
-    "rights": ["irq", "pio", "log"]
-}
-```
-
-This manifest describe a server named `ps2` that consume the `system.Server` and the `event.Sink` interfaces. The `system.Server` interface is used to interact with the init system, and the `event.Sink` interface is used to dispatch events.
-
-Servers can have different rights:
-
-- `irq`: the server can bind to an IRQ
-- `pio`: the server can interract with the CPU's IO ports
-- `log`: the server can log messages to the kernel log
-
-Theres is many more rights, but we will not go into them here.
-
-## Graphic Library
-
-After that, we built a full graphic library featuring vector graphics, bitmap graphics, and a lot of other cool stuff.
+We built brutal-GUI on top of brutal-GFX, a vector-based graphic library implementing affine transforms, SVG paths, vector fonts, and gradients. This library was a joint effort of me (sleepy_monax), Supercyp, which helped improve performance, and Feliwir, who worked on vector fonts support.
 
 ![Demonstration of SVG support](/articles/milestone-4/svg-path.png)
 
 ![Demonstration of Vector fonts support](/articles/milestone-4/vector-font.png)
 
-## Widget Library
+## New Website
 
-Based on the improved IPC framework and graphic library, we built a simple widget library with support for buttons, labels, windows, etc...
+You might have noticed, but we have a new website! It's built on state-of-the-art web technologies like Next, React, TailwindCSS, and MDX. This might look overkill for a simple blog, and you might be correct, but we have big plans for the future ;)
 
-![The BRUTAL Desktop](/articles/milestone-4/desktop.png)
+## Compiler
 
-NOTE: This is using our builtin fallback font since we don't have filesystem support yet
+Our compiler got a lot of love during this release cycle, and one of the highlights is the error reporting inspired by the rust compiler:
+
+![Error reporting](/articles/milestone-4/error-reporting.png)
+
+This is still a work in progress and at a PR state.
+
+## Storage Stack
+
+While disks and file systems were finally not the focus of this milestone, BRUTAL gained rudimentary support for AHCI and EXT2 thanks to Supercyp. And this effort will continue onto milestone five.
+
+## RISC-V Support
+
+We started working on RISC-V support, it's still early, but we have VMM, interrupts and device tree, and UART working.
+
+## IPC Subsystem
+
+Our IPC subsystem got a substantial overhaul. Now the system is split into components that communicate using capabilities. Each one has a manifest that describes which system capabilities are needed to start and the list of rights it possesses. Components and capabilities are wired together by the system server using the manifest. This architecture is mainly inspired by the Fushia operating system built by Google.
 
 ## General Improvements
 
+On top of everything stated above, the system received countless bug fixes and minor refinements, a documentations effort was started, and our build system got many improvements.
 
-On top of everythings stated above, we fixed countless bugs and improved the overall performance of the operating system. We continued working on our C compiler. Implemented basic support for ext2 filesystems.
-
-
-## What's Next
-
-Milestone 5 will focus on building the storage stack, and improve the stability of the system.
-
-This roadmap is not set in stone, and is subject to changes. You might want to check out the <a href="https://github.com/brutal-org/brutal/blob/main/meta/roadmap.md">latest version of the roadmap</a>.
-
-## Acknowledgements
+## Acknowledgements And Contributing
 
 ![](/articles/milestone-3/thanks.png)
 
-I (sleepy_monax) wanted to thank everyone who continue help Brutal to grow. Like every milestone before I'd like to thanks supercyp for all the work it did all around the system, Feliwir who just joined the projet and worked on Compression, Vector fonts, and the IO stack and <a href="https://github.com/brutal-org/brutal/graphs/contributors">everyone else</a> who contributed to this milestone!
+I (sleepy_monax) want to thank everyone who continued to help Brutal grow. Like every milestone before, I'd like to thank Supercyp for all his work around the system, Feliwir, who just joined the project and worked on Compression, Vector fonts, and the IO stack. And everyone else who contributed to this milestone!
 
-## Contributing
+We welcome all contributions even if they don't fit into [our milestones](https://github.com/brutal-org/brutal/blob/main/meta/roadmap.md). The Git repository is available [on GitHub](https://github.com/brutal-org/brutal), and you can discuss the project on our [discord server](http://discord.skiftos.org).
 
-We welcome all contribution even if they don't fit into our milestones :) The Git repository is available [on GitHub](https://github.com/brutal-org/brutal) and you can discuss about BRUTAL on the [brutal discord server](http://discord.skiftos.org).
-
-Thanks for reading and happy hacking!
+Thanks for reading, and happy hacking :^)
