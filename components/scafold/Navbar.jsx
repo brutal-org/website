@@ -12,7 +12,7 @@ export function Navbar() {
       <Link href="/"><Logo className="w-8" /></Link>
       <NavLink text="about" href="/" />
       <NavLink text="blog" href="/articles" />
-      <NavLink text="github" href="/articles" />
+      <NavLink text="github" href="https://github.com/brutal-org/brutal" />
       <div className="grow" />
       <ThemeToggle />
     </div>
