@@ -21,7 +21,7 @@ const components = {
 
 export default function Article({ id, source, frontMatter }) {
   return (
-    <article className="max-w-prose m-auto prose prose-neutral dark:prose-invert ">
+    <article className="max-w-prose m-auto prose prose-neutral dark:prose-invert p-4">
       <Head>
         <title>{frontMatter.title} - BRUTAL</title>
 
