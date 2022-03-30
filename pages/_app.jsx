@@ -8,7 +8,7 @@ function App({ Component, pageProps }) {
   return <ThemeProvider forcedTheme={Component.theme || undefined} attribute="class">
     <div className="flex flex-col min-h-screen ">
       <Head>
-        <link rel="icon" href="favicon.svg" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <Navbar />
       <div className="flex grow">
