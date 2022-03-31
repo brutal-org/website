@@ -5,13 +5,15 @@ import fs from 'node:fs';
 
 function ArticleCard({ post }) {
     return <Link href="/articles/[article]" as={`/articles/${post.id}`}>
-        <div key={post.id} className='overflow-hidden sep-all rounded cursor-pointer'>
-            <img className='sep-bottom' src={post.cover}></img>
-            <div className='p-4'>
-                <div className="text-2xl font-bold">{post.title}</div>
-                <div className="text-xl">{post.subtitle}</div>
-            </div>
-        </div>
+	<a>
+		<div key={post.id} className='overflow-hidden sep-all rounded cursor-pointer'>
+		    <img className='sep-bottom' src={post.cover}></img>
+		    <div className='p-4'>
+			<div className="text-2xl font-bold">{post.title}</div>
+			<div className="text-xl">{post.subtitle}</div>
+		    </div>
+		</div>
+	</a>
     </Link>
 }
 
