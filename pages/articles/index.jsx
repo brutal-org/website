@@ -4,17 +4,19 @@ import Link from 'next/link';
 import fs from 'node:fs';
 
 function ArticleCard({ post }) {
-    return <Link href="/articles/[article]" as={`/articles/${post.id}`}>
-	<a>
-		<div key={post.id} className='overflow-hidden sep-all rounded cursor-pointer'>
-		    <img className='sep-bottom' src={post.cover}></img>
-		    <div className='p-4'>
-			<div className="text-2xl font-bold">{post.title}</div>
-			<div className="text-xl">{post.subtitle}</div>
-		    </div>
-		</div>
-	</a>
-    </Link>
+    return (
+        <Link key={post.id} href="/articles/[article]" as={`/articles/${post.id}`}>
+            <a>
+                <div className="overflow-hidden sep-all rounded cursor-pointer">
+                    <img className="sep-bottom" src={post.cover}></img>
+                    <div className="p-4">
+                        <div className="text-2xl font-bold">{post.title}</div>
+                        <div className="text-xl">{post.subtitle}</div>
+                    </div>
+                </div>
+            </a>
+        </Link>
+    );
 }
 
 export default function PostList({ posts }) {
