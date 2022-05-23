@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Logo from "../components/common/Logo";
 import Button from "../components/common/Button";
+import { generateRssFeed } from "../library/rss";
 
 export default function Home() {
   return (
@@ -21,3 +22,7 @@ export default function Home() {
   )
 }
 
+export const getStaticProps = async () => {
+  await generateRssFeed(); // generate at build time
+  return { props: {} }
+}
